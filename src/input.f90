@@ -4,7 +4,7 @@ subroutine input(ncount,mcount,SFR,FeH,M_L,M_tu1,M_tu2,M_U,alpha1,alpha2,ak1,ak2
      REAL SFR,FeH,M_L,M_tu1,M_tu2,M_U,alpha1,alpha2,ak1,ak2 !!!!!! ak1,2=alpha1,2 korupa
      INTEGER ncount,mcount
      open(10,file='input')
-     open(20,file='padinp')
+     
 
      READ(10,*)SFR,FeH
      READ(10,*)ncount,mcount

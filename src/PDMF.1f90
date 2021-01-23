@@ -1,0 +1,66 @@
+SUBROUTINE PDMF(mcount)
+
+    INTEGER :: i , t, f, j , k, padlen , padini
+    REAL , ALLOCATABLE, DIMENSION(:) :: PDMF1, PDMF2, PDMF3, pad_age
+    REAL , ALLOCATABLE, DIMENSION(:) :: m, logM, IGIMF1, IGIMF2, IGIMF3, REM_M, M_MAXPA !!!M_max padova
+    REAL :: n, dt , gal_age 
+    INTEGER :: mcount ,ncount
+    CHARACTER(LEN=45) :: PDMF_FILE
+    CHARACTER(LEN=4)  :: n5 
+
+    padlen = 100 ; dt=10e7; padini=100; ncount=170
+    ALLOCATE(m(1:ncount + 1), logM(1:ncount + 1), pad_age(1:padlen+1))
+    logM = 0.0; pad_age = 0.0
+    ALLOCATE(IGIMF1(1:ncount+1),IGIMF2(1:ncount+1),IGIMF3(1:ncount+1))
+    IGIMF1 = 0.0; IGIMF2 = 0.0; IGIMF3 = 0.0
+    ALLOCATE(PDMF1(1:170),PDMF2(1:170),PDMF3(1:170), REM_M(1:ncount+1), M_MAXPA(1:ncount+1))
+    PDMF1 = 0.0; PDMF2 = 0.0; PDMF3 = 0.0; M_MAXPA = 0.0; REM_M =0.0 
+    ! open(80,file='padinp.txt')
+    ! DO j=1, padlen
+    !     read(80,*) pad_age(j), M_MAXPA(j)
+    ! ENDDO
+    open(90, file='IGIMFS')
+    Do k = 1,161
+        read(90, *) m(i), IGIMF1(i), IGIMF2(i), IGIMF3(i)
+        print *,m(i),IGIMF1(i), IGIMF2(i), IGIMF3(i)
+    ENDDO
+    ! n = (gal_age - pad_ini)/dt
+    ! t = 0.0
+    ! DO f = 1 , padlen
+    !     ! logt=padini+0.5*(f-1)
+    !     ! t = 10**(logt) 
+    !     DO i = 1, 161
+    !         ! m(1) = 0.083
+    !         ! logM(i) = -1.08 + 0.02*(i)  !-1.08+0.02*i
+    !         ! m(i) = 10.0**(logM(i))
+    !         IF (m(i) <= M_MAXPA(f)) THEN
+    !             PDMF1(i) = IGIMF1(i)
+    !         ENDIF    
+    !         IF (m(i) > M_MAXPA(f)) THEN
+                
+    !             IF(m(i) >= 40.0) THEN
+	! 		        REM_M(f) = 0.5*m(i)
+    !             ENDIF    
+	! 	        IF (m(i) >= 8.5 .and. m(i) < 40.0) THEN
+	! 		        REM_M(f) = 1.4
+    !             ENDIF    
+	! 	        IF(m(i) < 8.5) THEN
+	! 		        REM_M(f) = (0.077*m(i))+0.48
+    !             ENDIF
+    !             PDMF1(i) = 0.0
+	! 	    ENDIF
+    !         print *, m(i), PDMF1(i)
+            ! WRITE(n5,'(F4.1)')i 
+            ! PDMF_FILE = 'PDMF'//n5//'.txt'
+            ! OPEN(900, FILE=PDMF_FILE)
+            ! WRITE (900,*) m(i), PDMF1(i), REM_M(f)
+            ! CLOSE(900)
+        ! ENDDO 
+        ! PDMF_T = PDMF1(f) + REM_M(f) + PDMF_T
+    ! ENDDO
+    CLOSE(80)
+    CLOSE(90)
+
+    RETURN
+END     
+    

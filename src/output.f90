@@ -16,6 +16,7 @@ SUBROUTINE output(FeH,SFR)
   OPEN(240,FILE='canonic-IMF.txt')
   OPEN(500,FILE='mmax-Mecl.txt')
   OPEN(700,FILE='Ntot,Mtot.txt')
+  open(20,file='IGIMFS')
    
 RETURN
 END

@@ -21,6 +21,6 @@ PROGRAM GWIMF
 
   CALL max_mecl(ncount,SFR,FeH,Mecl_max,Kecl)
   CALL massfunc(Mecl_max,ncount,mcount,SFR,FeH,M_L,M_tu1,M_tu2,M_U,alpha1,alpha2,ak1,ak2,Kecl)
-  
+!   CALL PDMF(mcount)  
  
 END PROGRAM GWIMF

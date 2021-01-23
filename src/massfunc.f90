@@ -101,7 +101,7 @@ SUBROUTINE massfunc(Mecl_max, ncount, mcount, SFR, FeH, M_L, M_tu1, M_tu2, M_U, 
                IGIMF1(i) = IMF(i)*((Mecl_ave(f))**(-Beta))*dMecl(f) + IGIMF1(i)
                IGIMF2(i) = XI2(i)*((Mecl_ave(f))**(-Beta))*dMecl(f) + IGIMF2(i)
                IGIMF3(i) = XI(i)*((Mecl_ave(f))**(-Beta))*dMecl(f) + IGIMF3(i)
-               print*,"here",IGIMF1(i), IGIMF2(i), IGIMF3(i), K_3, K1, K11
+               ! print*,"here",IGIMF1(i), IGIMF2(i), IGIMF3(i), K_3, K1, K11
             ENDIF
 
 
@@ -124,9 +124,10 @@ SUBROUTINE massfunc(Mecl_max, ncount, mcount, SFR, FeH, M_L, M_tu1, M_tu2, M_U, 
       IF (m(i) <= 150.0) THEN
          WRITE (200, *) m(i), IGIMF1(i), IGIMF2(i), IGIMF3(i)
          WRITE (240, *) m(i), IMF(i), IMFS(i)
+         WRITE (20, *) m(i), IGIMF1(i), IGIMF2(i), IGIMF3(i)
       ENDIF
    ENDDO
-
+   
    CLOSE (200)
    CLOSE (500)
    CLOSE (240)
