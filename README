@@ -1,0 +1,14 @@
+IGIMF I,II,III
+change 'input'  ./bin/
+find the main.f90 & other fortran subroutins in ./src
+for cleaning type:
+./clean
+for compiling type: 
+./mk
+for running type:
+./rn
+
+find the MAKEFILE in Make directory
+
+
+
