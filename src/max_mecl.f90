@@ -12,6 +12,7 @@ SUBROUTINE max_mecl(ncount, SFR, FeH, Mecl_max, Kecl)
 !-----------------------------------------------------
    write(900,*)"f","M_t","Mtot","Mecl(f)","Mecl_max(i)" 
    Beta = -0.106*log10(SFR) + 2.
+   ! Beta = +2.0 !! for sfr = 0.0
    Mecl(1) = 5.0
    M_t = 0.
    Mtot = SFR*10.**7.  !Mtot=SFR*dt
@@ -28,14 +29,14 @@ SUBROUTINE max_mecl(ncount, SFR, FeH, Mecl_max, Kecl)
       ENDIF
       
       !   print*,Mtot,M_t, Mecl(f), Beta, SFR
-    write(900,*)f,M_t,Mtot,Mecl(f),Mecl_max
+      ! write(900,*)f,M_t,Mtot,Mecl(f),Mecl_max
       IF (M_t >= Mtot) THEN
          Mecl_max = Mecl(f)
          exit outer
       ENDIF
 
       !  WRITE(800,*)Mecl_max,Kecl,SFR
-    write(900,*)f,M_t,Mtot,Mecl(f),Mecl_max
+      write(900,*)f,M_t,Mtot,Mecl(f),Mecl_max
    ENDDO outer
 
    IF (M_t < Mtot) THEN

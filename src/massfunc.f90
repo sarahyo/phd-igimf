@@ -23,7 +23,7 @@ SUBROUTINE massfunc(Mecl_max, ncount, mcount, SFR, FeH, M_L, M_tu1, M_tu2, M_U, 
    Mecl(1) = 5.0 ; Mt_IGIMF3 = 0.0 ; Mt_IMF = 0.0
    Mt_IGIMF2 = 0.; Nt_IGIMF1 = 0.; Mt_IGIMF1 = 0.
    logM(1) = -1.08
-   m(1) = 10.0**(logM(1))
+   m(1) = 10.0**(logM(1)) 
    Beta = -0.106*log10(SFR) + 2.
    ak3 = 2.3
 
@@ -98,9 +98,9 @@ SUBROUTINE massfunc(Mecl_max, ncount, mcount, SFR, FeH, M_L, M_tu1, M_tu2, M_U, 
             ENDIF
 
             IF (m(i) <= m_max(f)) THEN
-               IGIMF1(i) = IMF(i)*((Mecl_ave(f))**(-Beta))*dMecl(f) + IGIMF1(i)
-               IGIMF2(i) = XI2(i)*((Mecl_ave(f))**(-Beta))*dMecl(f) + IGIMF2(i)
-               IGIMF3(i) = XI(i)*((Mecl_ave(f))**(-Beta))*dMecl(f) + IGIMF3(i)
+               IGIMF1(i) = IMF(i)*kecl*((Mecl_ave(f))**(-Beta))*dMecl(f) + IGIMF1(i)
+               IGIMF2(i) = XI2(i)*kecl*((Mecl_ave(f))**(-Beta))*dMecl(f) + IGIMF2(i)
+               IGIMF3(i) = XI(i)*kecl*((Mecl_ave(f))**(-Beta))*dMecl(f) + IGIMF3(i)
                ! print*,"here",IGIMF1(i), IGIMF2(i), IGIMF3(i), K_3, K1, K11
             ENDIF
 

@@ -24,6 +24,7 @@ clean:
 #	 rm $(Base)/bin/*.mrv
 	 rm $(Base)/bin/*.txt
 	 rm $(Base)/bin/fort.*
-	 rm  $(Base)/bin/IGIMF
+	 rm $(Base)/bin/IGIMF*
+	 rm $(Base)/python/IGIMFS
 #	 rm $(objects)
 # End of the makefile
